@@ -14,9 +14,11 @@ def load(file: str | Path = "./sample.toml") -> parsed_data:
 
     domain = str(config["common"]["domain"])
     inadyn = str(config["inadyn"]["config"])
+    coredns = str(config["coredns"]["config"])
 
     hs = parsed_data(doamin=domain)
     hs.inadyn = inadyn
+    hs.coredns = coredns
 
     for k, v in config["host"].items():
         h = host(
