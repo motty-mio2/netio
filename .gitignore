@@ -1,5 +1,6 @@
 poetry.lock
 export
+*toml
 ### Created by https://www.gitignore.io
 ### Python ###
 # Byte-compiled / optimized / DLL files
