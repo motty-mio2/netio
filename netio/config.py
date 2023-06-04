@@ -11,6 +11,6 @@ class config:
             self.export_dir: Path = Path(dir).expanduser()
         else:
             self.export_dir: Path = Path(dir).absolute()
-
+        self.export_dir.mkdir(exist_ok=True)
 
 c = config()
