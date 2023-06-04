@@ -1,5 +1,4 @@
 from dataclasses import dataclass, field
-from ipaddress import ip_address
 
 
 @dataclass
@@ -7,13 +6,18 @@ class host:
     rule_name: str
     ip_address: str
     external: bool = False
+    port: int = 80
+    service_domain: str | None = None
 
 
 @dataclass
-class configs:
+class parsed_data:
     doamin: str
     hosts: list[host] = field(default_factory=list)
-    inadyn: str = ""
+
+    coredns: str | None = None
+    caddy: str | None = None
+    inadyn: str | None = None
 
     def export(self) -> None:
         pass
