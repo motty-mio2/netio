@@ -4,10 +4,9 @@ from dataclasses import dataclass, field
 @dataclass
 class host:
     rule_name: str
-    ip_address: str
+    app_host_ip: str
     external: bool = False
     port: int = 80
-    service_domain: str | None = None
 
 
 @dataclass

@@ -1,10 +1,9 @@
-from pathlib import Path
-from netio.model.base_host import parsed_data
 from netio.config import c
+from netio.model.base_host import parsed_data
 
 
-def inadyn(parsed_data: parsed_data, directory: Path = c.root_dir, filename: str = "inadyn.conf") -> None:
-    with open(directory / filename, mode="w") as f:
+def inadyn(parsed_data: parsed_data, filename: str = "inadyn.conf") -> None:
+    with open(c.export_dir / filename, mode="w") as f:
         f.write("provider cloudflare.com {\n")
         f.write(f"    {parsed_data.inadyn}\n")
         f.write("    hostname = { \n")

@@ -6,10 +6,11 @@ from pathlib import Path
 class config:
     root_dir: Path = Path(__file__).parents[1]
 
-    def __post_init__(self) -> None:
-        self.root_dir = self.root_dir / "export"
-
-        self.root_dir.mkdir(exist_ok=True)
+    def set_export_dir(self, dir: str) -> None:
+        if dir[0] == "~":
+            self.export_dir: Path = Path(dir).expanduser()
+        else:
+            self.export_dir: Path = Path(dir).absolute()
 
 
 c = config()
