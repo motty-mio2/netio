@@ -1,7 +1,9 @@
-from netio.model.base_host import configs, host
+from pathlib import Path
+from netio.model.base_host import parsed_data
+from netio.config import c
 
 
-def coredns(configs: configs, filename: str = "mio2") -> None:
-    with open(filename, mode="w") as f:
-        for host in configs.hosts:
-            f.write(f"{host.ip_address} {host.rule_name}.{configs.doamin}\n")
+def coredns(parsed_data: parsed_data, directory: Path = c.root_dir, filename: str = "mio2") -> None:
+    with open(directory / filename, mode="w") as f:
+        for h in parsed_data.hosts:
+            f.write(f"{h.ip_address} {h.rule_name}.{parsed_data.doamin}\n")
